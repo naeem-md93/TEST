@@ -50,9 +50,11 @@ train_args = {
   "lora_target": "all",
   "output_dir": "qwen_lora_checkpoint",
   "overwrite_output_dir": True,
+  "lora_alpha": 64,
+  "lora_rank": 32,
 
   # --- CRITICAL MEMORY FIXES ---
-  "per_device_train_batch_size": 4, 
+  "per_device_train_batch_size": 1, 
   "gradient_accumulation_steps": 4, 
   "gradient_checkpointing": True,    
   "cutoff_len": 16384,                # Reduced from 16384 to prevent OOM
@@ -61,10 +63,11 @@ train_args = {
   "lr_scheduler_type": "cosine",
   "logging_steps": 500,
   "save_steps": 1000,
-  "learning_rate": 2e-4,
-  "num_train_epochs": 2.0,
+  "learning_rate": 1e-4,
+  "num_train_epochs": 3.0,
   "plot_loss": True,
-  "fp16": True,
+  "fp16": False,  # Disable mixed precision for better stability on limited GPU memory
+  "bf16": True, 
 }
 
 try:
