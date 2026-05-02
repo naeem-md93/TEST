@@ -42,7 +42,7 @@ if src_path not in sys.path:
 train_args = {
   "stage": "sft",
   "do_train": True,
-  "model_name_or_path": "Qwen/Qwen3.5-4B",
+  "model_name_or_path": "Qwen/Qwen3.5-9B",
   "dataset": "GenerationTag_Alpaca",
   "dataset_dir": "/workspace/LLaMA-Factory/data",
   "template": "qwen3_5_nothink",
