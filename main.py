@@ -42,7 +42,7 @@ if src_path not in sys.path:
 train_args = {
   "stage": "sft",
   "do_train": True,
-  "model_name_or_path": "Qwen/Qwen3.5-9B",
+  "model_name_or_path": "Qwen/Qwen3.5-4B",
   "dataset": "GenerationTag_Alpaca",
   "dataset_dir": "/workspace/LLaMA-Factory/data",
   "template": "qwen3_5_nothink",
@@ -55,19 +55,19 @@ train_args = {
 
   # --- CRITICAL MEMORY FIXES ---
   "per_device_train_batch_size": 1, 
-  "gradient_accumulation_steps": 4, 
+  "gradient_accumulation_steps": 8, 
   "gradient_checkpointing": True,    
-  "cutoff_len": 16384,                # Reduced from 16384 to prevent OOM
+  "cutoff_len": 8192,                # Reduced from 16384 to prevent OOM
   # -----------------------------
 
   "lr_scheduler_type": "cosine",
   "logging_steps": 500,
   "save_steps": 1000,
   "learning_rate": 1e-4,
-  "num_train_epochs": 3.0,
+  "num_train_epochs": 1.0,
   "plot_loss": True,
-  "fp16": False,  # Disable mixed precision for better stability on limited GPU memory
-  "bf16": True, 
+  "fp16": True,  # Disable mixed precision for better stability on limited GPU memory
+  "bf16": False, # 
 }
 
 try:
